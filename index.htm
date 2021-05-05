@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+    <head>
+        <title>{Title}</title>
+        <!--
+        a tumblr theme based on the vintage windows 95/98 look
+        live preview/download can be found at windows9800.tumblr.com
+        -->
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        <meta name="color:Background Color" content="#000080"/>
+        <meta name="color:Link Color" content="#0000FF"/>
+        <meta name="color:Title Text Color" content="#FFFFFF"/>
+        <meta name="if:Show Total Pages" content="1"/>
+        <meta name="if:Show Search Box on Tagged Pages" content="1"/>
+        <style>
+            ::-webkit-scrollbar {
+            	width: 16px;
+            	max-width: 16px;
+            }
+            
+            ::-webkit-scrollbar-track {
+            	background: url("https://static.tumblr.com/dt0m1du/kzao7vkc3/scrollbackground.png");
+            }
+            
+            ::-webkit-scrollbar-thumb {
+            	background: #BDBDBD;
+            	border: #DFDFDF 2px outset;
+            }
+            
+            ::-webkit-scrollbar-button:vertical:start:decrement{
+            	display:block;
+            	background: url("https://static.tumblr.com/dt0m1du/eDmo86mqb/scrollbarsprite.png") 0px 0px;
+            	width: 16px;
+            	max-width: 16px;
+            	height: 16px;
+            	max-height: 16px;
+            	border: #DFDFDF 2px outset;
+            }
+            
+            ::-webkit-scrollbar-button:vertical:end:increment{
+            	display:block;
+            	background: url("https://static.tumblr.com/dt0m1du/eDmo86mqb/scrollbarsprite.png") 0px 12px;
+            	width: 16px;
+            	max-width: 16px;
+            	height: 16px;
+            	max-height: 16px;
+            	border: #DFDFDF 2px outset;
+            }
+            
+            ::-webkit-scrollbar-button:horizontal:start:decrement{
+            	display:block;
+            	background: url("https://static.tumblr.com/dt0m1du/eDmo86mqb/scrollbarsprite.png") 12px 12px;
+            	width: 16px;
+            	max-width: 16px;
+            	height: 16px;
+            	max-height: 16px;
+            	border: #DFDFDF 2px outset;
+            }
+            
+            ::-webkit-scrollbar-button:horizontal:end:increment{
+            	display:block;
+            	background: url("https://static.tumblr.com/dt0m1du/eDmo86mqb/scrollbarsprite.png") 12px 1px;
+            	width: 16px;
+            	max-width: 16px;
+            	height: 16px;
+            	max-height: 16px;
+            	border: #DFDFDF 2px outset;
+            }
+            
+            body{
+                font-family: 'Microsoft Sans Serif';
+                font-size: 11px;
+                background-repeat: no-repeat;
+                background-color: {color:Background Color};
+            }
+            
+            a{
+                color: {color:Link Color};
+            }
+            
+            a:visited{
+                color: {color:Link Color};
+            }
+            
+            .bgimage{
+                position: fixed;
+                right: 0px;
+                top: 0px;
+            }
+            
+            .button{
+                border: #DFDFDF outset 2px;
+                color: black;
+                background: #C0C0C0;
+                text-align: center;
+            }
+            
+            .checkbox{
+                position: relative;
+                width: 11px;
+                height: 11px;
+                background: #FFFFFF;
+                border: 1px #DDD inset;
+            }
+            
+            .button:active{
+                border: #DFDFDF inset 2px;
+            }
+                
+                .button a{
+                    border: rgba(0,0,0,0) dotted 1px;
+                    text-decoration: none;
+                    color: black;
+                }
+            
+                .button a:focus{
+                    border: rgba(1,1,1,1) dotted 1px;
+                }
+            
+            blockquote{
+                border: #F0F0F0 groove 2px;
+                margin-left: 10px;
+                padding-left: 4px;
+                overflow: hidden;
+                margin-right: 10px;
+            }
+        
+            .winbox{
+                background-color: #C0C0C0;
+                color: black;
+                border: #DFDFDF outset 2px;
+            }
+            
+                .winbox .winbox_header{
+                    background-color: {color:Background Color};
+                    vertical-align: middle;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    font-size: 12px;
+                    min-height: 18px;
+                }
+            
+                    .winbox .winbox_header .winbox_title{
+                        vertical-align: middle;
+                        text-decoration: none;
+                    }
+                    
+                        .winbox .winbox_header .winbox_title .winbox_titletext{
+                            display: inline-block;
+                            margin-top: 2px;
+                            width: calc(100% - 48px);
+                            color: {color:Title Text Color};
+                        }
+                        
+                        .winbox .winbox_header .winbox_title .winbox_titletext.first_caps::first-letter{
+                            text-transform: uppercase;
+                        }
+                    
+                    .winbox .winbox_header .winbox_icon{
+                        position: absolute;
+                        width: 10px;
+                        height: 10px;
+                        top: 2px;
+                        right: 2px;
+                        text-align: center;
+                        font-size: 10px;
+                    }
+            
+                    .winbox .winbox_header .winbox_icon.winbox_like{
+                        right: 34px;
+                    }
+                    
+                    .winbox .winbox_header .winbox_icon.winbox_reblog{
+                        right: 18px;
+                    }
+                    
+                    .like_button iframe{
+                        min-height: 16px;
+                        transform: translateY(-3px);
+                    }
+                    
+                    .reblog_button svg{
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                    }
+            
+            .aboutbox{
+                position: fixed;
+                top:10%;
+                left:50px;
+                width: 350px;
+            }
+            
+            .portrait{
+                padding-top: 5px;
+                padding-left: 15px;
+                padding-right: 5px;
+                vertical-align: top;
+                width: 64px;
+            }
+            
+            .aboutbox_content{
+                padding-top: 15px;
+                max-width: 245px;
+                font-size: 11px;
+            }
+            
+                .aboutbox_content .aboutbox_buttons{
+                    padding-top: 14px;
+                    text-align: right;
+                }
+                    
+                    .aboutbox_content .aboutbox_buttons .aboutbox_button{
+                        padding: 2px;
+                        display: inline-flex;
+                        margin-bottom: 2px;
+                    }
+            
+            .posts{
+                position: absolute;
+                left:450px;
+            }
+            
+            .postbox{
+                width:530px;
+                position: relative;
+                margin-top:30px;
+            }
+            
+            .search_label{
+                width:15%;
+                text-align: center;
+                vertical-align: center;
+            }
+            
+            .search_box{
+                position: relative;
+                max-width:10px;
+                overflow-wrap: break-word;
+                background: #FFFFFF;
+                border: #DDD 2px inset;
+                padding: 2px 1px 2px 1px;
+            }
+            
+            .search_box_look{
+                position: absolute;
+                max-width: none;
+                top: 4px;
+                left: -1px;
+                width: 70%;
+            }
+            
+            .search_browse{
+                position: relative;
+                right: -4px;
+                margin-top: 0px !important;
+            }
+            
+            .search_box .search_box_icon{
+                position: absolute;
+                height: 12px;
+                width: 12px;
+                right: 0px;
+                top: 0px;
+                background: url("https://static.tumblr.com/dt0m1du/eDmo86mqb/scrollbarsprite.png") 1px 12px;
+                border: #DDD 2px outset;
+            }
+            
+            .search_row{
+                height: 20px;
+            }
+            
+                .search_button{
+                    padding: 3px;
+                    margin-top: 6px;
+                }
+                
+                .search_buttons .search_icon_container{
+                    text-align: center;
+                }
+                
+                    .search_buttons .search_icon_container .search_icon{
+                        width: 34px;
+                        height: 34px;
+                        background: url("https://static.tumblr.com/dt0m1du/sk4o8849u/icons2.png");
+                        background-position-x: 34px;
+                    }
+            
+            .postbox_date{
+                float: right;
+                margin-top: 8px;
+                margin-right: 10px;
+            }
+            
+            .postbox_icon{
+                float: right;
+                margin-right: 10px;
+                margin-top: 3px;
+                width: 34px;
+                height: 34px;
+                background-image: url("https://static.tumblr.com/dt0m1du/sk4o8849u/icons2.png");
+            }
+            
+            .postbox_icon.text_icon{
+                background-position-x: 0px;
+            }
+            
+            .postbox_icon.photo_icon{
+                background-position-x: -34px;
+            }
+            
+            .postbox_icon.quote_icon{
+                background-position-x: -68px;
+            }
+            
+            .postbox_icon.link_icon{
+                background-position-x: -102px;
+            }
+            
+            .postbox_icon.chat_icon{
+                background-position-x: 170px;
+            }
+            
+            .postbox_icon.audio_icon{
+                background-position-x: 136px;
+            }
+            
+            .postbox_icon.video_icon{
+                background-position-x: 102px;
+            }
+            
+            .postbox_icon.answer_icon{
+                background-position-x: 68px;
+            }
+            
+            .postbox_body{
+                margin: 10px;
+                margin-top: 40px;
+                padding: 2px;
+                border: #DFDFDF outset 2px;
+            }
+            
+            .postbox_body .postbox_tab{
+                position: relative;
+                top: -21px;
+                left: -4px;
+                background: #C0C0C0;
+                border: #DFDFDF outset 2px;
+                border-radius: 3px 4px 0px 0px;
+                border-bottom: none;
+                margin-right: 3px;
+                text-decoration: none;
+                text-align: center;
+                color: black;
+                padding: 3px 2px 7px 2px;
+            }
+            
+            .postbox_body .postbox_tab a{
+                border: rgba(0,0,0,0) dotted 1px;
+                border-radius: 3px 3px 0px 0px;
+                color: black;
+                text-decoration: none;
+            }
+            
+            .postbox_body .postbox_tab a:active{
+                border: rgba(1,1,1,1) dotted 1px;
+            }
+            
+            .postbox_body .unselected_tab{
+                top: -18px;
+                padding-bottom: 2px;
+            }
+            
+            .postbox_body .postbox_tab .notes_1{
+                display: none;
+            }
+            
+            .postbox_body .read_more_container{
+                border: #DFDFDF outset 2px;
+                background: #C0C0C0;
+                text-align: center;
+                width: 72px;
+                padding: 3px;
+            }
+            
+            .postbox_body .read_more_container:active{
+                border: #DFDFDF inset 2px;
+            }
+            
+            .postbox_body .read_more_container .read_more{
+                color: black;
+                text-decoration: none;
+            }
+            
+            .postbox_body .read_more_container .read_more:focus{
+                border: rgba(1,1,1,1) dotted 1px;
+            }
+            
+            .postbox_body .chatline{
+                margin-left: 14px;
+            }
+            
+            .postbox_body .quote{
+                font-size: 33px;
+                padding:5px;
+            }
+            
+            .postbox_body .postbox_content .meta.audio_player{
+                width: 50%;
+                padding: 2px;
+                position: relative;
+                right: 3px;
+            }
+            
+            .postbox_body .postbox_content .meta.audio_count{
+                width: 50%;
+                padding: 2px;
+                position: relative;
+                left: 3px;
+            }
+            
+            .postbox_body .inbox{
+                position: relative;
+                background-color: #C0C0C0;
+                top: -8px;
+                left: 19px;
+                vertical-align: top;
+            }
+            
+            .postbox_body .inbox a{
+                position: static;
+                vertical-align: top;
+            }
+            
+            .postbox_body .inbox + p{
+                margin-top: 0px;
+            }
+            
+            .postbox_body .meta{
+                border: #F0F0F0 groove 2px;
+            }
+            
+            
+            .postbox_body .postbox_content img{
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .tag_commas:last-child{
+                display: none;
+            }
+            
+            .postbox_buttons{
+                margin-right: 10px;
+                margin-bottom: 2px;
+            }
+            
+            .postbox_button{
+                padding: 3px;
+                margin-left: 3px;
+                float: right;
+            }
+
+        </style>
+        <script>
+            function tab(obj, motion){
+                if(motion == "open"){
+                    id = obj.getAttribute("post-id")
+                    obj.setAttribute("class","postbox_tab");
+                    document.getElementById("closeNotes_" + id).setAttribute("class", "postbox_tab unselected_tab");
+                    document.getElementById("postContent_" + id).setAttribute("style", "display: none;");
+                    document.getElementById("postNotes_" + id).setAttribute("style", "display: block;");
+                }else{
+                    id = obj.getAttribute("post-id")
+                    obj.setAttribute("class","postbox_tab");
+                    document.getElementById("openNotes_" + id).setAttribute("class", "postbox_tab unselected_tab");
+                    document.getElementById("postNotes_" + id).setAttribute("style", "display: none;");
+                    document.getElementById("postContent_" + id).setAttribute("style", "display: block;");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <img class="bgimage" src="https://static.tumblr.com/dt0m1du/0hco7tahh/95logo.png">
+        <div class="winbox aboutbox">
+            <div class="winbox_header">
+                <a href="/" class="winbox_title">
+                    <strong class="winbox_titletext">{Title}</strong>
+                    <span class="winbox_icon button"><strong>X</strong></span>
+                </a>
+                <a title="Theme" class="winbox_title" href="https://tmblr.co/maN2JH_W1d0v-UbDsgL2xfg">
+                    <span class="winbox_icon button" style="right:18px;">
+                        <strong>?</strong>
+                    </span>
+                </a>
+            </div>
+            <table style="width:100%">
+                <tr>
+                    <td class="portrait"><a href="/"><img src="{PortraitURL-64}"/></td></a>
+                    <td class="aboutbox_content">
+                        {Title}
+                        <br/>
+                        Copyright © {CopyrightYears}
+                        <br/><br/>
+                        {Description}
+                        <hr/>
+                        {block:IfShowTotalPages}
+                            <span>Physical Memory:</span><span style="float:right;">{TotalPages}KB</span> <br/>
+                        {/block:IfShowTotalPages}
+                        <div class="aboutbox_buttons">
+                            <div class="aboutbox_ask">
+                                {block:AskEnabled}
+                                    <span class="aboutbox_button button">
+                                        <a href="/ask">{AskLabel}</a>
+                                    </span>
+                                {/block:AskEnabled}
+                                {block:SubmissionsEnabled}
+                                    <span class="aboutbox_button button">
+                                        <a href="/submit">{SubmitLabel}</a>
+                                    </span>
+                                {/block:SubmissionsEnabled}
+                            </div>
+                            {block:HasPages}
+                                <div class="aboutbox_pages">
+                                    {block:Pages}
+                                        <span class="aboutbox_button button">
+                                            <a href="{URL}">{Label}</a>
+                                        </span>
+                                    {/block:Pages}
+                                </div>
+                            {/block:HasPages}
+                            {block:Pagination}
+                                <div class="aboutbox_pagination">
+                                    {block:PreviousPage}
+                                        <span class="aboutbox_button button">
+                                            <a href="{PreviousPage}">Previous</a>
+                                        </span>
+                                    {/block:PreviousPage}
+                                    {block:NextPage}
+                                        <span class="aboutbox_button button">
+                                            <a href="{NextPage}">Next</a>
+                                        </span>
+                                    {/block:NextPage}
+                                </div>
+                            {/block:Pagination}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- end ABOUTBOX-->
+        
+        <div class="posts">
+        
+        {block:IfShowSearchBoxOnTaggedPages}{block:TagPage}
+            <div class="winbox postbox" id="tagbox">
+                <div class="winbox_header">
+                    <span class="winbox_title">
+                        <strong class="winbox_titletext">Find: All Posts</strong>
+                    </span>
+                    <a class="winbox_title" href="/">
+                        <span class="winbox_icon button">
+                            <strong>X</strong>
+                        </span>
+                    </a>
+                </div>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <div class="postbox_body">
+                                <span class="postbox_tab">
+                                    <a>Name & Location</a>
+                                </span>
+                                <span class="postbox_tab unselected_tab">
+                                    <a>Date Modified</a>
+                                </span>
+                                <span class="postbox_tab unselected_tab">
+                                    <a>Advanced</a>
+                                </span>
+                                <table width="95%">
+                                    <tr class="search_row">
+                                        <td class="search_label">
+                                            <span>Tagged:</span>
+                                        </td>
+                                        <td class="search_box">
+                                            <span>{Tag}</span>
+                                            <span class="search_box_icon"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="search_label">
+                                            <span>Look in:</span>
+                                        </td>
+                                        <td>
+                                            <table width="100%" style="position:relative;">
+                                                <tr>
+                                                    <td class="search_box search_box_look">
+                                                        <span>HD (C:\)</span>
+                                                        <span class="search_box_icon"</span>
+                                                    </td>
+                                                    <td width="25%">
+                                                        <div class="button search_button search_browse"><a>Browse...</a></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <img class="checkbox"/>
+                                            <span style="vertical-align:top;">Include subfolders</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:58px;">
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td width="15%">
+                            <div class="search_buttons">
+                                <div class="button search_button">
+                                    <a>Search</a>
+                                </div>
+                                <div class="button search_button">
+                                    <a>Stop</a>
+                                </div>
+                                <div class="button search_button">
+                                    <a>New Search</a>
+                                </div>
+                                <p class="search_icon_container">
+                                    <img class="search_icon"/>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {/block:TagPage}{/block:IfShowSearchBoxOnTaggedPages}
+            
+            
+            {block:Posts inlineMediaWidth="500" inlineNestedMediaWidth="500"}
+            <div class="winbox postbox" id="post_{PostID}">
+                <div class="winbox_header">
+                    <a href="{Permalink}" class="winbox_title">
+                       <strong class="winbox_titletext {block:Date}first_caps{/block:Date}">{block:Date}{PostType} Post{block:Title} - {/block:Title}{/block:Date}{block:Title}{Title}{/block:Title}</strong>
+                        <span class="winbox_icon button"><strong>X</strong></span>
+                    </a>
+                        {block:Date}
+                        <span class="winbox_icon button winbox_reblog">{ReblogButton color="black" size="8"}</span>
+                        <span class="winbox_icon button winbox_like">{LikeButton color="black" size="8"}</span>
+                        {/block:Date}
+                </div>
+                {block:Date}
+                <a href="{Permalink}" class="postbox_date">
+                    Posted: {TimeAgo}<br/>
+                    {ShortMonth} {DayOfMonth} {Year} at {12Hour}:{Minutes}{CapitalAmPm}
+                </a>
+                <a href="{Permalink}" class="postbox_icon {PostType}_icon"></a>
+                {/block:Date}
+                <div class="postbox_body">
+                    <span {block:PermalinkPage}onclick="tab(this,'close');"{/block:PermalinkPage} post-id="{PostID}" id="closeNotes_{PostID}" class="postbox_tab close_notes">
+                        <a {block:IndexPage}href="{Permalink}"{/block:IndexPage}{block:PermalinkPage}href="javascript:;"{/block:PermalinkPage}>Content</a>
+                    </span>
+                    {block:Date}
+                        <span {block:PermalinkPage}onclick="tab(this,'open');"{/block:PermalinkPage} post-id="{PostID}" id="openNotes_{PostID}" class="postbox_tab open_notes unselected_tab">
+                            <a {block:IndexPage}href="{Permalink}"{/block:IndexPage}{block:PermalinkPage}href="javascript:;"{/block:PermalinkPage}>{NoteCount} Note<span class="notes_{NoteCount}">s</span></a>
+                        </span>
+                    {/block:Date}
+                    <div class="postbox_content" id="postContent_{PostID}">
+                        {block:Text}
+                            {Body}
+                        {/block:Text}
+                        {block:Photo}
+                            {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}
+                            {block:Caption}
+                                <br/>{Caption}
+                            {/block:Caption}
+                        {/block:Photo}
+                        {block:Photoset}
+                            {Photoset-500}
+                            {block:Caption}
+                                <br/>{Caption}
+                            {/block:Caption}
+                        {/block:Photoset}
+                        {block:Quote}
+                            <div class="quote meta">{Quote}</div>
+                            {block:Source}
+                                <table style="width:100%" class="quote_table">
+                                    <tr>
+                                        <td style="width:20px;vertical-align:top;text-align:center">&mdash;</td>
+                                        <td>{Source}</td>
+                                    </tr>
+                                </table>
+                            {/block:Source}
+                        {/block:Quote}
+                        {block:Link}
+                            <h1><a href="{URL}" target="{Target}">{Name}</a></h1>
+                            {block:Description}
+                                {Description}
+                            {/block:Description}
+                        {/block:Link}
+                        {block:Chat}
+                            {block:Lines}
+                                <div class="meta">
+                                    {block:Label}<span class="inbox"><strong>{Label}</strong></span>{/block:Label}
+                                    <p class="chatline">{Line}</p>
+                                </div>
+                            {/block:Lines}
+                        {/block:Chat}
+                        {block:Audio}
+                            {block:AudioEmbed}
+                                {AudioEmbed-500}
+                            {/block:AudioEmbed}
+                                {block:AudioPlayer}
+                                <table style="width:100%">
+                                    {block:AlbumArt}
+                                        <tr>
+                                            <td style="width:35%" class="meta">
+                                                <img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName}{block:Artist} - {/block:Artist}{TrackName}{/block:TrackName}{block:Album}({Album}){/block:Album}" />
+                                            </td>
+                                        {/block:AlbumArt}
+                                        <td {block:AlbumArt}style="width:65%"{/block:AlbumArt} class="meta">
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td>
+                                                        <table style="width:100%">
+                                                            <tr>
+                                                                <td class="meta audio_player">
+                                                                    {AudioPlayerBlack}
+                                                                </td>
+                                                                <td class="meta audio_count">
+                                                                    {PlayCountWithLabel}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                {block:Artist}
+                                                    <tr>
+                                                        <td class="meta">
+                                                            <strong class="inbox">Artist:</strong>
+                                                            <p>{Artist}</p>
+                                                        </td>
+                                                    </tr>
+                                                {/block:Artist}
+                                                {block:TrackName}
+                                                    <tr>
+                                                        <td class="meta">
+                                                            <strong class="inbox">Track:</strong>
+                                                            <p>{TrackName}</p>
+                                                        </td>
+                                                    </tr>
+                                                {/block:TrackName}
+                                                {block:Album}
+                                                    <tr>
+                                                        <td class="meta">
+                                                            <strong class="inbox">Album:</strong>
+                                                            <p>{Album}</p>
+                                                        </td>
+                                                    </tr>
+                                                {/block:Album}
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                {/block:AudioPlayer}
+                            {block:Caption}
+                                <br/>{Caption}
+                            {/block:Caption}
+                        {/block:Audio}
+                        {block:Video}
+                            {Video-500}
+                            {block:Caption}
+                                <br/>{Caption}
+                            {/block:Caption}
+                        {/block:Video}
+                        {block:Answer}
+                            <div class="meta">
+                                <span class="inbox">
+                                    <img src="{AskerPortraitURL-16}"/>   {Asker} asks:
+                                </span>
+                                <p class="question">{Question}</p>
+                            </div>
+                            <br/>
+                            {block:Answerer}
+                                <div class="meta">
+                                    <span class="inbox">
+                                        <img src="{AnswererPortraitURL-16}"/>  {Answerer} says:
+                                    </span>
+                                    <p class="answer">{Answer}</p>
+                                </div>
+                            {/block:Answerer}
+                            {Replies}
+                        {/block:Answer}
+                        {block:HasTags}
+                            <hr/>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:30px">Tags:</td>
+                                    <td>
+                                    <span class="postbox_tags">
+                                        {block:Tags}
+                                            <a href="{TagURL}">{Tag}</a><span class="tag_commas">, </span>
+                                        {/block:Tags}
+                                    </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        {/block:HasTags}
+                    </div>
+                    <div class="posbox_notes" id="postNotes_{PostID}" style="display:none;">
+                        {block:PostNotes}
+                            {PostNotes}
+                        {/block:PostNotes}
+                    </div>
+                </div>
+                <div class="postbox_buttons">
+                    {block:RebloggedFrom}
+                        <span class="button postbox_button"><a href="{ReblogRootURL}">Source: {ReblogRootName}</a></span>
+                        <span class="button postbox_button"><a href="{ReblogParentURL}">Via: {ReblogParentName}</a></span>
+                        <br/>
+                        <br/>
+                    {/block:RebloggedFrom}
+                    {block:Date}
+                        <span class="button postbox_button"><a href="{ReblogURL}">Reblog</a></span>
+                    {/block:Date}
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+            {/block:Posts}
+        </div>
+    </body>
+</html>
